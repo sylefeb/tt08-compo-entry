@@ -1,5 +1,5 @@
 tinytapeout: tt_main.si
-	silice-make.py -s tt_main.si -b tinytapeout -t tinytapeout -p basic -o BUILD_$(subst :,_,$@) -a force-reset-init,split-inouts $(ARGS)
+	silice-make.py --top tt_um_warp -s tt_main.si -b tinytapeout -t tinytapeout -p basic -o BUILD_$(subst :,_,$@) -a force-reset-init,split-inouts $(ARGS)
 	cp BUILD_$(subst :,_,$@)/build.v ../project.v
 
 verilator: tt_sim_main.si

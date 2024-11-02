@@ -5,6 +5,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+/* verilator lint_off DECLFILENAME */
+/* verilator lint_off PINCONNECTEMPTY */
+
 `default_nettype none
 
 // for tinytapeout we target ice40, but then replace SB_IO cells
@@ -12,7 +15,7 @@
 `define ICE40 1
 `define SIM_SB_IO 1
 
-module tt_um_silice (
+module tt_um_warp (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -31,6 +34,9 @@ module tt_um_silice (
     rst_n_q <= rst_n;
   end
 
+  wire __unused_out_done;
+  wire __unused_out_clock;
+
   M_main main(
 
     .in_ui(ui_in),
@@ -42,8 +48,14 @@ module tt_um_silice (
 
     .in_run(1'b1),
     .reset(~rst_n_q),
-    .clock(clk)
+    .clock(clk),
+
+    .out_done (__unused_out_done),
+    .out_clock(__unused_out_clock)
   );
+
+  // prevents warning
+  wire _unused = &{ena,1'b0};
 
   //              vvvvv inputs when in reset to allow PMOD external takeover
   // assign uio_oe = rst_n ? {1'b1,1'b1,main_uio_oe[3],main_uio_oe[2],1'b1,main_uio_oe[1],main_uio_oe[0],1'b1} : 8'h00;
@@ -212,6 +224,7 @@ output  [0:0] out_audio1;
 input reset;
 output out_clock;
 input clock;
+wire __unused_go = &{1'b0,in_go};
 assign out_clock = clock;
 reg signed [7:0] _t_audio8;
 reg  [0:0] _t_audio1;
@@ -625,8 +638,10 @@ wire  [0:0] _w_vga_active;
 wire  [0:0] _w_vga_vblank;
 wire  [11:0] _w_vga_vga_x;
 wire  [10:0] _w_vga_vga_y;
+wire __unused__vga = &{_w_vga_vga_hs,_w_vga_vga_vs,_w_vga_active,_w_vga_vblank,_w_vga_vga_x,_w_vga_vga_y,1'b0};
 wire signed [7:0] _w_zic_audio8;
 wire  [0:0] _w_zic_audio1;
+wire __unused__zic = &{_w_zic_audio8,_w_zic_audio1,1'b0};
 reg signed [5:0] _t___stage___block_3_trix;
 reg signed [5:0] _t___stage___block_3_triy;
 reg signed [10:0] _t___stage___block_3_x;
@@ -736,13 +751,15 @@ M_vga_M_main_demo_vga vga (
 .out_vga_x(_w_vga_vga_x),
 .out_vga_y(_w_vga_vga_y),
 .reset(reset),
-.clock(clock));
+.clock(clock),.out_clock()
+);
 M_music_M_main_demo_zic zic (
 .in_go(_d_go),
 .out_audio8(_w_zic_audio8),
 .out_audio1(_w_zic_audio1),
 .reset(reset),
-.clock(clock));
+.clock(clock),.out_clock()
+);
 
 
 
@@ -1254,6 +1271,9 @@ output out_done;
 input reset;
 output out_clock;
 input clock;
+wire __unused_in_run = in_run;
+wire __unused_ui = &{1'b0,in_ui};
+wire __unused_uio = &{1'b0,inout_uio_i};
 assign out_clock = clock;
 wire  [1:0] _w_demo_video_r;
 wire  [1:0] _w_demo_video_g;
@@ -1262,6 +1282,7 @@ wire  [0:0] _w_demo_video_hs;
 wire  [0:0] _w_demo_video_vs;
 wire  [7:0] _w_demo_audio8;
 wire  [0:0] _w_demo_audio1;
+wire __unused__demo = &{_w_demo_video_r,_w_demo_video_g,_w_demo_video_b,_w_demo_video_hs,_w_demo_video_vs,_w_demo_audio8,_w_demo_audio1,1'b0};
 
 reg  [7:0] _d_uio_o;
 reg  [7:0] _q_uio_o;
@@ -1280,7 +1301,8 @@ M_vga_demo_M_main_demo demo (
 .out_audio8(_w_demo_audio8),
 .out_audio1(_w_demo_audio1),
 .reset(reset),
-.clock(clock));
+.clock(clock),.out_clock()
+);
 
 
 assign inout_uio_oe[0] = _q_uio_oenable[0];

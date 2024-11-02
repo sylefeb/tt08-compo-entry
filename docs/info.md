@@ -65,7 +65,7 @@ The audio also runs on an ULX3S using its DAC (but no video in this case).
 
 ## External hardware
 
-- VGA PMOD
-- Audio PMOD
+- [VGA PMOD](https://github.com/mole99/tiny-vga)
+- [Audio PMOD](https://github.com/MichaelBell/tt-audio-pmod)
 
 See https://tinytapeout.com/competitions/demoscene/

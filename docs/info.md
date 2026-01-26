@@ -25,7 +25,7 @@ Here is the [actual source](../src/silice/vga_demo.si). Silice now fully support
 ### Graphics
 
 The core effect is a classical [tunnel effect](https://lodev.org/cgtutor/tunnel.html) ; however this is normally done with a "huge" pre-computed table having
-one entry per-pixel. So I thought it'd be challenging and fun to do it while
+one entry per-pixel, and there is no way such a per-pixel table would fit in the design. So I thought it'd be challenging and fun to do it while
 racing the beam! Plus, I really [like this effect](https://htmlpreview.github.io/?https://github.com/sylefeb/gfxcat/blob/main/runtime/gfxcat_tunnel.html).
 
 There are several tricks at play: a shallow

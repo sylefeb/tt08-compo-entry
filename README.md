@@ -4,7 +4,7 @@
 
 - [Read about the project here](docs/info.md)
 
-[![Watch the video](https://img.youtube.com/vi/ELOYGwZgHnw/maxresdefault.jpg)](https://youtube.com/ELOYGwZgHnw)
+[![Watch the video](https://img.youtube.com/vi/ELOYGwZgHnw/maxresdefault.jpg)](https://youtu.be/ELOYGwZgHnw)
 
 ## What is Tiny Tapeout?
 

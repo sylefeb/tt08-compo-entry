@@ -34,7 +34,7 @@ The core effect is a classical [tunnel effect](https://lodev.org/cgtutor/tunnel.
 one entry per-pixel, and there is no way such a per-pixel table would fit in the design. So I thought it'd be challenging and fun to do it while
 racing the beam! Plus, I really [like this effect](https://htmlpreview.github.io/?https://github.com/sylefeb/gfxcat/blob/main/runtime/gfxcat_tunnel.html).
 
-As a rule of thumb, a 640x480 -- the resolution this is running at -- would require at least 256KB or pre-computed data. We have roughly ~4000 logic cells, so ... well yes, it's not gonna fit :-)
+As a rule of thumb, a 640x480 -- the resolution this is running at -- would require at least 256KB (262144 bytes) of pre-computed data. We have roughly ~4000 logic cells, so ... well yes, it's not gonna fit :-)
 
 ### Graphics
 
@@ -73,11 +73,15 @@ Simulation of both audio and video can run on an ECPIX5, with the Diligent VGA
 PMOD on ports 0,1 and an I2S audio PMOD on port 2 (upper row).
 The audio also runs on an ULX3S using its DAC (but no video in this case).
 
-## ASIC fun fact
+## ASIC
 
 The design reached a very high density, **95.62%** utilization. This may be due to the pipelined nature of its core computations? In any case it's pretty cool as it means it uses almost every bit of available space!
 
-Checkout the [3D view of the chip](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf).
+The chip is shown below but also checkout the [3D view](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf).
+
+<div align="center">
+    <img src="chip.png" alt="Image of the chip" width="200px">
+</div>
 
 ## External hardware
 

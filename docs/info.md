@@ -80,7 +80,7 @@ The design reached a very high density, **95.62%** utilization. This may be due 
 The chip is shown below but also checkout the [3D view](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf).
 
 <div align="center">
-    <img src="chip.png" alt="Image of the chip" width="200px">
+    <img src="chip.png" alt="Image of the chip" width="400px">
 </div>
 
 ## External hardware

@@ -1,8 +1,8 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# Tiny Tapeout Verilog Project Template
+# Warp: A Tiny Tapeout demo compo entry! (tt08) 
 
-- [Read the documentation for project](docs/info.md)
+- [Read about the project here](docs/info.md)
 
 ## What is Tiny Tapeout?
 

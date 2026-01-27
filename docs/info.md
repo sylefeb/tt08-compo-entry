@@ -65,6 +65,8 @@ at how compact this can be made, the soundtrack using perhaps around 10% of the 
 
 I tried to make a track that matches the spirit and rhythm of the graphics. It is what is is, but I'm happy that there's sound at all!
 
+The audio unit [is here](https://github.com/sylefeb/tt08-compo-entry/blob/1a64b6fefaaef9963322092fc917bb73be507f7d/src/silice/vga_demo.si#L370).
+
 ## How to test
 
 Plug the VGA+audio PMODs to the board and run. Maybe it works? **[Update, January 2026]** Yes it does!!!!

@@ -13,7 +13,7 @@ You can also include images in this folder and reference them in the markdown. E
 > out before it loops. At start it waits for a few seconds to ensure VGA sync is
 > achieved.
 
-[![Watch the video](https://img.youtube.com/vi/ELOYGwZgHnw/maxresdefault.jpg)](https://youtu.be/ELOYGwZgHnw)
+[![Watch the video](warp.jpg)](https://youtu.be/ELOYGwZgHnw)
 
 ## How it works
 
@@ -25,7 +25,8 @@ You can also include images in this folder and reference them in the markdown. E
 
 This demo is written in [Silice](https://github.com/sylefeb/Silice/), my HDL.
 Here is the [actual source](../src/silice/vga_demo.si). Silice now fully supports TinyTapeout as a build target.
-Checkout the [3D view of the chip](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf)
+
+Checkout the [3D view of the chip](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf).
 
 ### Why a tunnel effect?
 
@@ -66,11 +67,17 @@ I tried to make a track that matches the spirit and rhythm of the graphics. It i
 
 ## How to test
 
-Plug the VGA+audio PMODs to the board and run. Maybe it works?
+Plug the VGA+audio PMODs to the board and run. Maybe it works? **[Update, January 2026]** Yes it does!!!!
 
 Simulation of both audio and video can run on an ECPIX5, with the Diligent VGA
 PMOD on ports 0,1 and an I2S audio PMOD on port 2 (upper row).
 The audio also runs on an ULX3S using its DAC (but no video in this case).
+
+## ASIC fun fact
+
+The design reached a very high density, **95.62%** utilization. This may be due to the pipelined nature of its core computations? In any case it's pretty cool as it means it uses almost every bit of available space!
+
+Checkout the [3D view of the chip](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf).
 
 ## External hardware
 

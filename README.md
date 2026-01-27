@@ -4,6 +4,8 @@
 
 - [Read about the project here](docs/info.md)
 
+[![Watch the video](https://img.youtube.com/vi/ELOYGwZgHnw/maxresdefault.jpg)](https://youtu.com/ELOYGwZgHnw)
+
 ## What is Tiny Tapeout?
 
 Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.

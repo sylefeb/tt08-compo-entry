@@ -13,20 +13,29 @@ You can also include images in this folder and reference them in the markdown. E
 > out before it loops. At start it waits for a few seconds to ensure VGA sync is
 > achieved.
 
+[![Watch the video](https://img.youtube.com/vi/ELOYGwZgHnw/maxresdefault.jpg)](https://youtu.be/ELOYGwZgHnw)
+
 ## How it works
 
-> *But does it work?*
+> *But does it work in ASIC?*
+
+**[Update, January 2026]** Yes it does!!!!
 
 ### Preface
 
 This demo is written in [Silice](https://github.com/sylefeb/Silice/), my HDL.
-Here is the [actual source](../src/silice/vga_demo.si). Silice now fully support TinyTapeout as a build target.
+Here is the [actual source](../src/silice/vga_demo.si). Silice now fully supports TinyTapeout as a build target.
+Checkout the [3D view of the chip](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf)
 
-### Graphics
+### Why a tunnel effect?
 
 The core effect is a classical [tunnel effect](https://lodev.org/cgtutor/tunnel.html) ; however this is normally done with a "huge" pre-computed table having
 one entry per-pixel, and there is no way such a per-pixel table would fit in the design. So I thought it'd be challenging and fun to do it while
 racing the beam! Plus, I really [like this effect](https://htmlpreview.github.io/?https://github.com/sylefeb/gfxcat/blob/main/runtime/gfxcat_tunnel.html).
+
+As a rule of thumb, a 640x480 -- the resolution this is running at -- would require at least 256KB or pre-computed data. We have roughly ~4000 logic cells, so ... well yes, it's not gonna fit :-)
+
+### Graphics
 
 There are several tricks at play: a shallow
 [CORDIC](https://en.wikipedia.org/wiki/CORDIC) pipeline to compute an *atan* and *length*, and a few precomputed *1/x* distances to interpolate

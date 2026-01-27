@@ -125,6 +125,13 @@ In Silice code, this is what the music track looks like:
 
 The arrays here are the entire track, and the code that follow implements bass, drums and keys.
 
+You might have noticed the audio unit outputs both `audio1` (the actual 1-bit audio signal for tt08!) and `audio8`. The 8-bit version is used on FPGA to test with an audio DAC, it is ignored otherwise. But wait? how do we go from 8-bits to only one? The usual PWM (pulse-width-modulation) trick: audio is low frequency from a hardware point of view (even 44kHz is very slow compared to our 25MHz) so we can generate a high frequency 1-bit signal that will average itself when going through the audio hardware backend (the speaker itself is a huge dampener!). This works like magic!
+
+<div align="center">
+    <img src="pwm.jpg" alt="Music track" width="700px">
+</div>
+
+
 ## How to test
 
 Plug the VGA+audio PMODs to the board and run. Maybe it works? **[Update, January 2026]** Yes it does!!!!

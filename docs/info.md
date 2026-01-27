@@ -62,17 +62,26 @@ Second, the most important part, the pipeline! Even without division we are left
 
 ### Register combiners
 
+Controlling the various effects -- there are many tunnel variants -- is done through a set of registers. Changing there values produce variants of the tunnel. To me this is reminiscent of the good-old-days of [GPU register combiners](https://registry.khronos.org/OpenGL/extensions/NV/NV_register_combiners.txt)!
 
+The code for that is shown below:
+<div align="center">
+    <img src="regcomb.jpg" alt="Arc tangent" width="600px">
+</div>
 
-### Additional effect
+At the top you can see a commented switch-case. That's how it started, and then it ended up squashed into an unreadable optimized logic below :) This sets up all the key registers that control the tunnel effect (`ma1`,`ma2`,`ma3`,`rseg1`,`rseg2`,`rseg3`,`cmode`,`mmode`). These are used in the logic afterwards. They control the texture, the viewpoint, the color shifts, etc. The master is `effect` and it is updated with the number of passing frames.
+
+<div align="center">
+    <img src="frames.jpg" alt="Arc tangent" width="800px">
+</div>
+
+### Additional effects
 
 The demo uses a lot of dithering (ordered Bayer dithering) given the output is RGB 2-2-2. All computations are grayscale and the RGB lense effect is obtained by delaying the grayscale values using the tunnel distance in R and B.
 
 The tunnel viewpoint change is obtained simply by shifting the tunnel center. I was surprised that a simple translation gives such a convincing effect (almost as if the viewpoint was rotating).
 
-The 'blue-orange' tunnel effect is obtained through temporal dithering, one frame
-being the standard tunnel, the other the rotated tunnel. This gets combined with
-the RGB lense distortion, achieving the final look.
+The 'blue-orange' tunnel effect is obtained through temporal dithering, one frame being the standard tunnel, the other the rotated tunnel. This gets combined with the RGB lense distortion, achieving the final look.
 
 #### The logo
 

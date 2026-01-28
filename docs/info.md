@@ -12,7 +12,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ### Preface
 
-This demo is running on hardware (ASIC, an actual chip!) in ~3000 gates. There's no cpu/gpu/ram, and it fits on 161x225 μm (130nm fab): [3D view of the chip](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf). Below is a simulation of the video and audio output showing the entire demo loop. This is all made possible thanks to [TinyTapeout](https://tinytapeout.com/).
+This demo is running on hardware (ASIC, an actual chip!) in ~3400 gates. There's no cpu/gpu/ram, and it fits on 161x225 μm (130nm fab): [3D view of the chip](https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://sylefeb.github.io/tt08-compo-entry/tinytapeout.gds.gltf). Below is a simulation of the video and audio output showing the entire demo loop. This is all made possible thanks to [TinyTapeout](https://tinytapeout.com/).
 
 > Please make sure to watch the demo for a few minutes as various effects play
 > out before it loops. At start it waits for a few seconds to ensure VGA sync is

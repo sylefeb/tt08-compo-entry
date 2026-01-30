@@ -177,7 +177,7 @@ Thanks for reading so far! If you enjoy this type of hardware-oriented Graphics 
 - [bitluni live-stream recording showing all demos in tt08](https://www.youtube.com/watch?v=A9BhSaqL7jg).
 - [a1k0n's detailed write up on his demos](https://www.a1k0n.net/2025/12/19/tiny-tapeout-demo.html) and [3d torus](https://www.a1k0n.net/2025/01/10/tiny-tapeout-donut.html) (also with CORDIC fun), all in tt08.
 - [My tt07 terrain explorer](https://mastodon.online/@sylefeb/113924385249401994), also in [tt07 bring-up party](https://www.youtube.com/watch?v=NoGewMTtAjQ). (It's trully an incredible moment when your first ASIC turns up!).
-- Of course the [TinyTapeout website](https://tinytapeout.com/)! A lot more designs to discover and enjoy.
+- Of course the [TinyTapeout website](https://tinytapeout.com/)! A lot more designs to discover and learn about.
 
 ## How to test
 

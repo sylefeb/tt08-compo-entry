@@ -101,7 +101,7 @@ The rotating rings (third effect above) are obtained by adding the frame counter
 
 In addition, all of these effects have multiple "layers" from 1 to 3. Of course because we are on actual hardware all effects are always on, we only see the first selected of the layers, as if it was opaque and obscuring the others behind (or none possibly in the starfield effect behind the logo).
 
-> The layer selection is done with a multiplexer if-then-else logic, no longer easy to separate from the rest due to heavy-handed optimization. This is explained a bit more in [Register combiners](#register-combiners).
+> The layer selection is done with a multiplexer if-then-else logic, no longer easy to separate from the rest due to heavy-handed optimization. This is explained a bit more in "Register combiners" below.
 
 I made a [ShaderToy](https://www.shadertoy.com/view/w3KyW3) to help explain tunnel layers and the various effect, it's simple and commented so check it out for more details. Bellow is a screenshot showing two layers. The gray layer appears in front of the blue, because it is selected first based on its texture value. The blue layer also appears slower, which is obtained by scaling the $1/length$ distance.
 

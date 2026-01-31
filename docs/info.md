@@ -82,6 +82,39 @@ the `a_inc` expression.
 
 > `i` increments by 3 each pipeline stage, each stage unrolls 3 CORDIC steps, this is showing the last one, hence `i+2`.
 
+### Texturing the tunnel
+
+Now that we have $atan$ and $1/length$, how do we turn that into an actual tunnel effect? Here are the various effects:
+
+<div align="center">
+<img src="2.gif" alt="tunnel effect 1" width="120px">
+<img src="3.gif" alt="tunnel effect 2" width="120px">
+<img src="4.gif" alt="tunnel effect 3" width="120px">
+<img src="5.gif" alt="tunnel effect 4" width="120px">
+</div>
+
+They are all produced from the base $atan$ and $1/length$ values. However there are multiple tricks at play. But first the basics: the tunnel is drawn with a 'procedural' texture generated from $uv$ coordinates. The $uv$ coordinates for the texture are directly $(atan,1/length)$. The textures are obtained by combining these $uv$ values, for instance the third 'square plates' effect is based on a simple `u ^ v` (xor) of the coordinates.
+
+The forward motion of the tunnel is obtained by adding the frame counter to the $v$ coordinate, making the texture slide towards the viewer.  The forward motion also speeds up and down depending on the effects, for instance at the start (first effect) it rapidly accelerates as we warp forward!
+
+The rotating rings (third effect above) are obtained by adding the frame counter to the $u$ value based on $atan$. The spiral texture (fourth effect) is combining $u$ and $v$ such that the pattern rotates in $u$ as it advances in $v$.
+
+In addition, all of these effects have multiple "layers" from 1 to 3. Of course because we are on actual hardware all effects are always on, we only see the first selected of the layers, as if it was opaque and obscuring the others behind (or none possibly in the starfield effect behind the logo).
+
+> The layer selection is done with a multiplexer if-then-else logic, no longer easy to separate from the rest due to heavy-handed optimization. This is explained a bit more in [Register combiners](#register-combiners).
+
+I made a [ShaderToy](https://www.shadertoy.com/view/w3KyW3) to help explain tunnel layers and the various effect, it's simple and commented so check it out for more details. Bellow is a screenshot showing two layers. The gray layer appears in front of the blue, because it is selected first based on its texture value. The blue layer also appears slower, which is obtained by scaling the $1/length$ distance.
+
+<div align="center">
+<img src="shadertoy.png" alt="two layers of tunnel" width="200px">
+</div>
+
+The tunnel viewpoint change (fourth effect above) is obtained simply by shifting the tunnel center. I was surprised that a simple translation gives such a convincing effect (almost as if the viewpoint was rotating). This is again an old trick from the demoscene.
+
+The 'blue-orange' tunnel effect is obtained through temporal dithering, one frame being the standard tunnel, the other the rotated tunnel. This gets combined with the RGB lens distortion, achieving the final look.
+
+Combining/selecting all these effect produces the full demo! How this selection is performed is discussed next.
+
 ### Register combiners
 
 Controlling the various effects -- there are several tunnel variants -- is done through a set of registers. Changing these values produce variants of the tunnel and on-screen effects. This is reminiscent of the good-old-days of [GPU register combiners](https://registry.khronos.org/OpenGL/extensions/NV/NV_register_combiners.txt) controlling effects in early GPU pipelines.
@@ -100,10 +133,6 @@ At the top there is a commented switch-case. That's how it started, and then it 
 ### Additional effects
 
 The demo uses a lot of dithering (ordered Bayer dithering) given the output is RGB 2-2-2. All computations are internally grayscale 6-bits before dithering. The RGB lens effect is obtained by delaying the grayscale values using the tunnel view distance in R and B.
-
-The tunnel viewpoint change is obtained simply by shifting the tunnel center. I was surprised that a simple translation gives such a convincing effect (almost as if the viewpoint was rotating).
-
-The 'blue-orange' tunnel effect is obtained through temporal dithering, one frame being the standard tunnel, the other the rotated tunnel. This gets combined with the RGB lens distortion, achieving the final look.
 
 ### The logo
 

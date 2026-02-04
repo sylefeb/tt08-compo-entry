@@ -103,7 +103,7 @@ In addition, all of these effects have multiple "layers" from 1 to 3. Of course 
 
 > The layer selection is done with a multiplexer if-then-else logic, no longer easy to separate from the rest due to heavy-handed optimization. This is explained a bit more in "Register combiners" below.
 
-I made a [ShaderToy](https://www.shadertoy.com/view/w3KyW3) to help explain tunnel layers and the various effect, it's simple and commented so check it out for more details. Bellow is a screenshot showing two layers. The gray layer appears in front of the blue, because it is selected first based on its texture value. The blue layer also appears slower, which is obtained by scaling the $1/length$ distance.
+I made a [ShaderToy](https://www.shadertoy.com/view/w3KyW3) to help explain tunnel layers and the various effects, it's simple and commented so check it out for more details. Bellow is a screenshot showing two layers. The gray layer appears in front of the blue, because it is selected first based on its texture value. The blue layer also appears slower, which is obtained by scaling the $1/length$ distance.
 
 <div align="center">
 <img src="shadertoy.png" alt="two layers of tunnel" width="200px">
@@ -113,11 +113,11 @@ The tunnel viewpoint change (fourth effect above) is obtained simply by shifting
 
 The 'blue-orange' tunnel effect is obtained through temporal dithering, one frame being the standard tunnel, the other the rotated tunnel. This gets combined with the RGB lens distortion, achieving the final look.
 
-Combining/selecting all these effect produces the full demo! How this selection is performed is discussed next.
+Combining/selecting all these effects produces the full demo! How this selection is performed is discussed next.
 
 ### Register combiners
 
-Controlling the various effects -- there are several tunnel variants -- is done through a set of registers. Changing these values produce variants of the tunnel and on-screen effects. This is reminiscent of the good-old-days of [GPU register combiners](https://registry.khronos.org/OpenGL/extensions/NV/NV_register_combiners.txt) controlling effects in early GPU pipelines.
+Controlling the various effects -- the tunnel variants -- is done through a set of registers. Changing these values produces variants of the tunnel and on-screen effects. This is reminiscent of the good-old-days of [GPU register combiners](https://registry.khronos.org/OpenGL/extensions/NV/NV_register_combiners.txt) controlling effects in early GPU pipelines.
 
 The code for that is shown below:
 <div align="center">
@@ -148,7 +148,7 @@ Since the start I knew the demo would be called 'Warp', I got this 'mind picture
 So of course I wanted a cool logo to go with it. I initially went for a pixelated
 look but it felt crude, so I started to ponder about a cleaner outline. The
 key idea was to do it from tiles: a square and triangles in various symmetries.
-From their, a comparator and a bit of logic is used to do all four possible triangles.
+From there, a comparator and a bit of logic is used to do all four possible triangles.
 
 Btw, I still have the drawing on my board two years later!! (it did suffer a bit).
 
